@@ -14,7 +14,7 @@ section .text
 _start:
      ; Generate "Random" Number between 0 and 5
     mov eax, 13              ; Get Time
-	int 80h                  ; Call kernel
+    int 80h                  ; Call kernel
     mov ebx, 6               ; Maximum value for the random number
     div ebx                  ; Divide queried time
     mov eax, edx             ; Get remainder (num 0 to 5)
