@@ -1,20 +1,8 @@
-later in this course:
-lesson 11 or 12
+Submission Deadline:
+Mar 29, 2023 11:59 PM
 
-small team project 
-work in teams of 3
+Presentation Date:
+March 30 (Final Class)
 
-https://asmtutor.com/
-
-make a presentation + demonstration on Assembly 16-20 minutes
-
-eg https://www.tutorialspoint.com/compile_assembly_online.php
-
-All teammates should run the same hardware or emulator:
-e.g. https://onecompiler.com/assembly
-
-examples:
-
-get user input, upper case, and display it
-ask the user for 2 numbers, then print their sum and product
-very small game (e.g. guess the randomly-picked int 1-10)
+Resource:
+Presentation + demonstration on Assembly: 16-20 minutes
