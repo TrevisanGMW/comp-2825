@@ -13,21 +13,21 @@ section .text
 
 _start:
      ; Generate "Random" Number between 0 and 5
-    mov eax, 13              ; Get Time
-    int 80h                  ; Call kernel
+    mov eax, 13              ; Invoke Get Time - SYS_TIME
+    int 0x80                 ; Call kernel
     mov ebx, 6               ; Maximum value for the random number
     div ebx                  ; Divide queried time
     mov eax, edx             ; Get remainder (num 0 to 5)
     mov [num], eax           ; Store random number for later
     
     ; Print initial message
-    mov ebx, 0               ; Clear ebx 
+    mov ebx, 0               ; Clear "ebx" 
     mov eax, initialMsg      ; Pointer to the message
     call sprintLF
 
     ; ; Debugging (print generated number)
     ; mov eax, [num]           ; Move variable num into eax for printing
-    ; call iprint              ; print eax
+    ; call iprint              ; print "eax"
     
     ; Read user input
     mov edx, 255             ; Number of bytes to read
@@ -37,15 +37,15 @@ _start:
     int 0x80                 ; Call kernel
     
     ; Convert user input to integer
-    mov eax, input           ; Move user input to eax
+    mov eax, input           ; Move user input to "eax"
     call atoi                ; Convert user input to integer
     ; call iprint              ; Print for debugging
     mov [input], eax         ; Move converted int back to variable input
     
     ; Compare numbers and print result
-    mov al, [input]          ; Move int user input to al
-    cmp al, [num]            ; Compare generated number with al (input)
-    jne guessBad             ; Jump if Condition Is Met (same number)
+    mov al, [input]          ; Move (int) user input to "al
+    cmp al, [num]            ; Compare generated number with "al" (input)
+    jne guessBad             ; Jump if condition is met (same number)
     jmp guessGood            ; In case it doesn't jump, the number is wrong
     call quit                ; Exit program
 
@@ -112,8 +112,8 @@ sprint:
  
     mov     ecx, eax        ; Move eax to ecx in preparation for system call
     mov     ebx, 1          ; File descriptor for stdout
-    mov     eax, 4          ; System call for write
-    int     80h             ; Call kernel
+    mov     eax, 4          ; System call for write - SYS_WRITE
+    int     0x80            ; Call kernel
  
     pop     ebx             ; Restore ebx from the value we pushed onto the stack at the start
     pop     ecx             ; Restore ecx from the value we pushed onto the stack at the start
@@ -201,8 +201,8 @@ atoi:
 ; Exit program and restore resources
 quit:
     ; Exit the program
-    mov eax, 1              ; System call for exit
+    mov eax, 1              ; System call for exit - SYS_EXIT
     mov ebx, 0              ; Process' exit code (0 = no errors)
     int 0x80                ; Call the kernel
-    ret                     ; Return (Incase using as function)
+    ret                     ; Return
     
