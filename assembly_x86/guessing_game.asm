@@ -12,7 +12,7 @@ section .text
     global _start            ; Main function / Entry point
 
 _start:
-     ; Generate "Random" Number between 0 and 5
+    ; Generate "Random" Number between 0 and 5
     mov eax, 13              ; Invoke Get Time - SYS_TIME
     int 0x80                 ; Call kernel
     mov ebx, 6               ; Maximum value for the random number
@@ -122,7 +122,7 @@ sprint:
    
 
 ;------------------------------------------
-; int slen(String message) - Modified to use 0x0a ("\n") as terminator 
+; int slen(String message)
 ; String length calculation function
 slen:
     push    ebx             ; Preserve ebx on the stack to be restored after function runs
